@@ -1,12 +1,12 @@
--IC:/Users/Webjester/Downloads/Marlin-2.0.x/Marlin-2.0.x/Marlin
--IC:/Users/Webjester/Downloads/Marlin-2.0.x/Marlin-2.0.x/.pio/libdeps/LPC1768/SailfishLCD
--IC:/Users/Webjester/Downloads/Marlin-2.0.x/Marlin-2.0.x/.pio/libdeps/LPC1768/Adafruit NeoPixel
--IC:/Users/Webjester/Downloads/Marlin-2.0.x/Marlin-2.0.x/.pio/libdeps/LPC1768/TMCStepper_ID5513/src
--IC:/Users/Webjester/Downloads/Marlin-2.0.x/Marlin-2.0.x/.pio/libdeps/LPC1768/U8glib-HAL_ID1932/src
+-IC:/ALE Projects/marlin_tronxy_XY-2/Marlin
+-IC:/ALE Projects/marlin_tronxy_XY-2/.pio/libdeps/LPC1768/SailfishLCD
+-IC:/ALE Projects/marlin_tronxy_XY-2/.pio/libdeps/LPC1768/Adafruit NeoPixel
+-IC:/ALE Projects/marlin_tronxy_XY-2/.pio/libdeps/LPC1768/TMCStepper_ID5513/src
+-IC:/ALE Projects/marlin_tronxy_XY-2/.pio/libdeps/LPC1768/U8glib-HAL_ID1932/src
 -IC:/Users/Webjester/.platformio/packages/framework-arduino-lpc176x/libraries/LiquidCrystal/src
 -IC:/Users/Webjester/.platformio/packages/framework-arduino-lpc176x/libraries/Servo/src
--IC:/Users/Webjester/Downloads/Marlin-2.0.x/Marlin-2.0.x/Marlin/src/HAL/HAL_LPC1768/include
--IC:/Users/Webjester/Downloads/Marlin-2.0.x/Marlin-2.0.x/Marlin/src/HAL/HAL_LPC1768/u8g
+-IC:/ALE Projects/marlin_tronxy_XY-2/Marlin/src/HAL/HAL_LPC1768/include
+-IC:/ALE Projects/marlin_tronxy_XY-2/Marlin/src/HAL/HAL_LPC1768/u8g
 -IC:/Users/Webjester/.platformio/packages/framework-arduino-lpc176x/cores/arduino
 -IC:/Users/Webjester/.platformio/packages/framework-arduino-lpc176x/system/CMSIS/include
 -IC:/Users/Webjester/.platformio/packages/framework-arduino-lpc176x/system/CMSIS/lib
@@ -17,7 +17,7 @@
 -IC:/Users/Webjester/.platformio/packages/toolchain-gccarmnoneeabi/lib/gcc/arm-none-eabi/8.2.1/include
 -IC:/Users/Webjester/.platformio/packages/toolchain-gccarmnoneeabi/lib/gcc/arm-none-eabi/8.2.1/include-fixed
 -IC:/Users/Webjester/.platformio/packages/tool-unity
--IC:/Users/Webjester/Downloads/Marlin-2.0.x/Marlin-2.0.x/include
+-IC:/ALE Projects/marlin_tronxy_XY-2/include
 -DLPC176X_FRAMEWORK
 -DTARGET_LPC1768
 -DF_CPU=100000000L
