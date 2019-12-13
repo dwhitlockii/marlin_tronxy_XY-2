@@ -72,7 +72,7 @@
 
 // Author info of this build printed to the host during boot and M115
 #define STRING_CONFIG_H_AUTHOR "(Webjester, 12062019)" // Who made the changes.
-//#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
+//#defin#define SHOW_BOOTSCREEN
 
 /**
  * *** VENDORS PLEASE READ ***
@@ -87,7 +87,6 @@
 
 // Show the Marlin bootscreen on startup. ** ENABLE FOR PRODUCTION **
 #define SHOW_BOOTSCREEN
-
 // Show the bitmap in Marlin/_Bootscreen.h on startup.
 //#define SHOW_CUSTOM_BOOTSCREEN
 
@@ -134,7 +133,7 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "Tronxy XY-2 SKR V.9"
+#define CUSTOM_MACHINE_NAME "Tronxy XY-2 SKR V1.01"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like http://www.uuidgenerator.net/version4
@@ -722,7 +721,7 @@
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 150 }
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 100 } 
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 400, 90 } TronXY 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 90}
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 94}
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
@@ -771,9 +770,9 @@
 #define DEFAULT_TRAVEL_ACCELERATION   3000    // X, Y, Z acceleration for travel (non printing) moves
 */
 
-#define DEFAULT_ACCELERATION          1000    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  3000    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   3000    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_ACCELERATION          500    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  1000    // E acceleration for retracts
+#define DEFAULT_TRAVEL_ACCELERATION   1000    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * Default Jerk limits (mm/s)
@@ -783,10 +782,10 @@
  * When changing speed and direction, if the difference is less than the
  * value set here, it may happen instantaneously.
  */
-//#define CLASSIC_JERK
+#define CLASSIC_JERK
 #if ENABLED(CLASSIC_JERK)
-  #define DEFAULT_XJERK 10.0
-  #define DEFAULT_YJERK 10.0
+  #define DEFAULT_XJERK 15.0
+  #define DEFAULT_YJERK 15.0
   #define DEFAULT_ZJERK  0.3
 
   //#define LIMITED_JERK_EDITING        // Limit edit via M205 or LCD to DEFAULT_aJERK * 2
@@ -795,7 +794,7 @@
   #endif
 #endif
 
-#define DEFAULT_EJERK    5.0  // May be used by Linear Advance
+#define DEFAULT_EJERK    15.0  // May be used by Linear Advance
 
 /**
  * Junction Deviation Factor
@@ -941,10 +940,11 @@
  *
  * Specify a Probe position as { X, Y, Z }
  */
-#define NOZZLE_TO_PROBE_OFFSET { -32, -5, 1.65 }
+//#define NOZZLE_TO_PROBE_OFFSET { -45, -15, 1.65 }
+#define NOZZLE_TO_PROBE_OFFSET { -45, -0, 1.65 }
 
 // Certain types of probes need to stay away from edges
-#define MIN_PROBE_EDGE 13
+#define MIN_PROBE_EDGE 30
 
 // X and Y axis travel speed (mm/m) between probes
 #define XY_PROBE_SPEED 8000
@@ -964,7 +964,7 @@
  * A total of 2 does fast/slow probes with a weighted average.
  * A total of 3 or more adds more slow probes, taking the average.
  */
-//#define MULTIPLE_PROBING 2
+#define MULTIPLE_PROBING 2
 //#define EXTRA_PROBING    1
 
 /**
@@ -981,10 +981,10 @@
  * Example: `M851 Z-5` with a CLEARANCE of 4  =>  9mm from bed to nozzle.
  *     But: `M851 Z+1` with a CLEARANCE of 2  =>  2mm from bed to nozzle.
  */
-#define Z_CLEARANCE_DEPLOY_PROBE   10 // Z Clearance for Deploy/Stow
+#define Z_CLEARANCE_DEPLOY_PROBE   2 // Z Clearance for Deploy/Stow
 #define Z_CLEARANCE_BETWEEN_PROBES  5 // Z Clearance between probe points
-#define Z_CLEARANCE_MULTI_PROBE     5 // Z Clearance between multiple probes
-//#define Z_AFTER_PROBING           5 // Z position after probing is done
+#define Z_CLEARANCE_MULTI_PROBE     3 // Z Clearance between multiple probes
+#define Z_AFTER_PROBING           3 // Z position after probing is done
 
 #define Z_PROBE_LOW_POINT          -2 // Farthest distance below the trigger-point to go before stopping
 
@@ -1124,9 +1124,9 @@
 #define FIL_RUNOUT_PIN Y_MAX_PIN
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
   #define NUM_RUNOUT_SENSORS   1     // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
-  #define FIL_RUNOUT_INVERTING true // Set to true to invert the logic of the sensor.
+  #define FIL_RUNOUT_INVERTING false // Set to true to invert the logic of the sensor.
  //#define FIL_RUNOUT_PULLUP          // Use internal pullup for filament runout pins.
-  #define FIL_RUNOUT_PULLDOWN      // Use internal pulldown for filament runout pins.
+ // #define FIL_RUNOUT_PULLDOWN      // Use internal pulldown for filament runout pins.
 
   // Set one or more commands to execute on filament runout.
   // (After 'M412 H' Marlin will ask the host to handle the process.)
@@ -1241,13 +1241,13 @@
 
     // Beyond the probed grid, continue the implied tilt?
     // Default is to maintain the height of the nearest edge.
-    //#define EXTRAPOLATE_BEYOND_GRID
+    #define EXTRAPOLATE_BEYOND_GRID
 
     //
     // Experimental Subdivision of the grid by Catmull-Rom method.
     // Synthesizes intermediate points to produce a more detailed mesh.
     //
-    //#define ABL_BILINEAR_SUBDIVISION
+    #define ABL_BILINEAR_SUBDIVISION
     #if ENABLED(ABL_BILINEAR_SUBDIVISION)
       // Number of subdivisions between probe points
       #define BILINEAR_SUBDIVISIONS 3
